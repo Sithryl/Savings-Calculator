@@ -1,10 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-
+import Logo from '../public/assets/sc-thin.png';
+import Image from 'next/image';
 const Nav = () => {
   return (
       <main>
-          <nav className="navbar bg-light-blue text-neutral-content">
+      <nav className="flex-row relative navbar bg-light-blue text-neutral-content">
+        <div className='mx-2'>
+          <Image src={Logo} alt="Captain's Logo" className='max-w-xs' />
+        </div>
         <div className="btn btn-ghost normal-case text-xl text-black">
           Savings Calulator
         </div>
@@ -46,7 +50,7 @@ const Nav = () => {
             </a>
           </li>
         </ul>
-          </nav>
+        </nav>
       </main>  
   )
 }
