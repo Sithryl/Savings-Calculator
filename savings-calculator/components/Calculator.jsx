@@ -2,13 +2,24 @@
 import React, { useState } from 'react';
 
 const ExpenseTracker = () => {
+  const commonExpenseCategories = [
+    'Food Delivery',
+    'Eating Out',
+    'Subscriptions',
+    'Entertainment',
+    'Clothing',
+    'Travel',
+    'Online Shopping',
+    'Other',
+  ];
+
   const [expenses, setExpenses] = useState([]);
-  const [expenseName, setExpenseName] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [expenseCost, setExpenseCost] = useState('');
   const [totalCost, setTotalCost] = useState(0);
 
-  const handleExpenseNameChange = (e) => {
-    setExpenseName(e.target.value);
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
   };
 
   const handleExpenseCostChange = (e) => {
@@ -16,9 +27,9 @@ const ExpenseTracker = () => {
   };
 
   const addExpense = () => {
-    if (expenseName && expenseCost) {
+    if (selectedCategory && expenseCost) {
       const newExpense = {
-        name: expenseName,
+        category: selectedCategory,
         cost: parseFloat(expenseCost),
       };
 
@@ -28,7 +39,7 @@ const ExpenseTracker = () => {
       const newTotalCost = totalCost + parseFloat(expenseCost);
       setTotalCost(newTotalCost);
 
-      setExpenseName('');
+      setSelectedCategory('');
       setExpenseCost('');
     }
   };
@@ -46,13 +57,15 @@ const ExpenseTracker = () => {
     <div>
       <h1>Expense Tracker</h1>
       <div>
-        <label htmlFor="expense-name">Expense Name:</label>
-        <input
-          type="text"
-          id="expense-name"
-          value={expenseName}
-          onChange={handleExpenseNameChange}
-        />
+        <label htmlFor="category-select">Expense Category:</label>
+        <select id="category-select" value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="">Select a Category</option>
+          {commonExpenseCategories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
 
         <label htmlFor="expense-cost">Expense Cost:</label>
         <input
@@ -68,7 +81,7 @@ const ExpenseTracker = () => {
       <ul>
         {expenses.map((expense, index) => (
           <li key={index}>
-            {expense.name}: ${expense.cost}
+            {expense.category}: ${expense.cost}
             <button onClick={() => removeExpense(index)}>Remove</button>
           </li>
         ))}
@@ -80,4 +93,5 @@ const ExpenseTracker = () => {
 };
 
 export default ExpenseTracker;
+
 

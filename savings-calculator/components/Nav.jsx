@@ -1,7 +1,9 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import Logo from '../public/assets/sc-thin.png';
 import Image from 'next/image';
+
 const Nav = () => {
   return (
       <main>
@@ -32,22 +34,17 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <a>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-            </a>
+            <button className="btn bg-black py-3" onClick={()=>window.my_modal_1.showModal()}>Info</button>
+            <dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">
+        <form form method="dialog" className="modal-box">
+          <h3 className="font-bold text-lg">See how much you can save!</h3>
+          <p className="py-4">Add to your list of common expenses to see how much money you could be saving.</p>
+          <div className="modal-action">
+      {/* if there is a button in form, it will close the modal */}
+            <button className="btn">Close</button>
+          </div>
+        </form>
+            </dialog>
           </li>
         </ul>
         </nav>
