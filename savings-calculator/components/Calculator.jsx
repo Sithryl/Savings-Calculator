@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from 'react';
 
 const ExpenseTracker = () => {
@@ -73,8 +74,8 @@ const ExpenseTracker = () => {
 
   const calculateFinalAmount = () => {
     if (yearsToSave && yearlyInterest) {
-      const compoundedInterest = 1 + yearlyInterest / 100;
-      const finalAmount = totalCost * 12 * yearsToSave * compoundedInterest;
+        const compoundedInterest = 1 + yearlyInterest / 100;
+        const finalAmount = totalCost * 12 * ((Math.pow(compoundedInterest, yearsToSave) - 1) / (compoundedInterest - 1));
 
       return finalAmount.toFixed(2);
     }

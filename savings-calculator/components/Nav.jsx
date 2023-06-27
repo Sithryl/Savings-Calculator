@@ -36,7 +36,7 @@ const Nav = () => {
           <li>
             <button className="btn bg-black py-3" onClick={()=>window.my_modal_1.showModal()}>Info</button>
             <dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">
-        <form form method="dialog" className="modal-box">
+        <form form='true' className="modal-box">
           <h3 className="font-bold text-lg">See how much you can save!</h3>
           <p className="py-4">Add to your list of common expenses to see how much money you could be saving.</p>
           <div className="modal-action">
