@@ -17,6 +17,10 @@ const ExpenseTracker = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [expenseCost, setExpenseCost] = useState('');
   const [totalCost, setTotalCost] = useState(0);
+  const [yearsToSave, setYearsToSave] = useState('');
+  const [yearlyInterest, setYearlyInterest] = useState(10);
+  const [calculationStarted, setCalculationStarted] = useState(false);
+  const [finalAmount, setFinalAmount] = useState('');
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -24,6 +28,14 @@ const ExpenseTracker = () => {
 
   const handleExpenseCostChange = (e) => {
     setExpenseCost(e.target.value);
+  };
+
+  const handleYearsToSaveChange = (e) => {
+    setYearsToSave(e.target.value);
+  };
+
+  const handleYearlyInterestChange = (e) => {
+    setYearlyInterest(parseFloat(e.target.value));
   };
 
   const addExpense = () => {
@@ -51,6 +63,33 @@ const ExpenseTracker = () => {
 
     const newTotalCost = totalCost - removedExpense.cost;
     setTotalCost(newTotalCost);
+  };
+
+  const startCalculation = () => {
+    const calculatedFinalAmount = calculateFinalAmount();
+    setFinalAmount(calculatedFinalAmount);
+    setCalculationStarted(true);
+  };
+
+  const calculateFinalAmount = () => {
+    if (yearsToSave && yearlyInterest) {
+      const compoundedInterest = 1 + yearlyInterest / 100;
+      const finalAmount = totalCost * 12 * yearsToSave * compoundedInterest;
+
+      return finalAmount.toFixed(2);
+    }
+    return '';
+  };
+
+  const resetCalculator = () => {
+    setExpenses([]);
+    setSelectedCategory('');
+    setExpenseCost('');
+    setTotalCost(0);
+    setYearsToSave('');
+    setYearlyInterest(10);
+    setCalculationStarted(false);
+    setFinalAmount('');
   };
 
   return (
@@ -88,6 +127,42 @@ const ExpenseTracker = () => {
       </ul>
 
       <div>Total Cost: ${totalCost}</div>
+
+      <div>
+        <label htmlFor="years-to-save">Years to Save:</label>
+        <input
+          type="number"
+          id="years-to-save"
+          value={yearsToSave}
+          onChange={handleYearsToSaveChange}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="yearly-interest">Yearly Interest (%):</label>
+        <input
+          type="number"
+          id="yearly-interest"
+          value={yearlyInterest}
+          onChange={handleYearlyInterestChange}
+        />
+      </div>
+
+      {!calculationStarted && (
+        <button onClick={startCalculation} disabled={!yearsToSave || !yearlyInterest}>
+          Start Calculation
+        </button>
+      )}
+
+      {calculationStarted && (
+        <div>
+          <div>Final Amount: ${finalAmount}</div>
+        </div>
+      )}
+
+      {calculationStarted && (
+        <button onClick={resetCalculator}>Reset Calculator</button>
+      )}
     </div>
   );
 };
