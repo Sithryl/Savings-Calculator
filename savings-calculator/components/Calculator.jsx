@@ -95,76 +95,93 @@ const ExpenseTracker = () => {
 
   return (
     <div>
-      <h1>Expense Tracker</h1>
+      <div className="flex flex-col w-full lg:flex-row h-auto">
+        <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
+      <h1 className='font-bold py-3 text-3xl'>Expense Tracker</h1>
       <div>
-        <label htmlFor="category-select">Expense Category:</label>
-        <select id="category-select" value={selectedCategory} onChange={handleCategoryChange}>
-          <option value="">Select a Category</option>
+            <label className='p-4' htmlFor="category-select">Type of Expense:</label>
+            
+        <select className="select w-full max-w-xs" id="category-select" value={selectedCategory} onChange={handleCategoryChange}>
+          <option value="" className=''>Select a Category</option>
           {commonExpenseCategories.map((category) => (
             <option key={category} value={category}>
               {category}
             </option>
           ))}
         </select>
-
-        <label htmlFor="expense-cost">Expense Cost:</label>
-        <input
+            <br />
+        <label className='px-4' htmlFor="expense-cost">Cost Per Month:</label>
+            <input
+          className="input w-full max-w-xs"
           type="number"
           id="expense-cost"
           value={expenseCost}
           onChange={handleExpenseCostChange}
         />
-
-        <button onClick={addExpense}>Add Expense</button>
+        
+            <div className='py-4'>
+              <button className='btn btn-warning' onClick={addExpense}>Add Expense</button>
+              </div>
       </div>
 
-      <ul>
+      <ul className=''>
         {expenses.map((expense, index) => (
-          <li key={index}>
+          <li className='p-2' key={index}>
             {expense.category}: ${expense.cost}
-            <button onClick={() => removeExpense(index)}>Remove</button>
+            <button className='btn-xs btn-error ml-3' onClick={() => removeExpense(index)}>Remove</button>
           </li>
         ))}
       </ul>
 
-      <div>Total Cost: ${totalCost}</div>
+      <div className='py-4 font-bold text-xl'>Total Cost: ${totalCost}</div>
 
-      <div>
-        <label htmlFor="years-to-save">Years to Save:</label>
-        <input
+          <div>
+          
+        <label className='px-4' htmlFor="years-to-save">Years to Save:</label>
+            <input
+          className="input w-full max-w-xs"
           type="number"
           id="years-to-save"
           value={yearsToSave}
           onChange={handleYearsToSaveChange}
         />
       </div>
-
+          
       <div>
-        <label htmlFor="yearly-interest">Yearly Interest (%):</label>
-        <input
+        <label className='' htmlFor="yearly-interest">Yearly Interest (%):</label>
+            <input
+              className="input w-full max-w-xs"
           type="number"
           id="yearly-interest"
           value={yearlyInterest}
           onChange={handleYearlyInterestChange}
         />
       </div>
-
-      {!calculationStarted && (
-        <button onClick={startCalculation} disabled={!yearsToSave || !yearlyInterest}>
+          <div className='py-4'>
+          {!calculationStarted && (
+            
+        <button className='btn btn-warning' onClick={startCalculation} disabled={!yearsToSave || !yearlyInterest}>
           Start Calculation
         </button>
-      )}
+            )}
+            </div>
+          </div>
+      </div>
+      <br></br>
+      <div className="divider lg:divider-horizontal"></div>
 
+      <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
       {calculationStarted && (
         <div>
           <div>Final Amount: ${finalAmount}</div>
         </div>
       )}
-
+      
       {calculationStarted && (
         <button onClick={resetCalculator}>Reset Calculator</button>
       )}
-    </div>
+      </div>
+      </div>
   );
 };
 

@@ -7,13 +7,16 @@ import Image from 'next/image';
 const Nav = () => {
   return (
       <main>
-      <nav className="flex-row relative navbar bg-light-blue text-neutral-content">
-        <div className='mx-2'>
+      <nav className="flex-row relative navbar bg-light-blue text-neutral-content justify-between">
+
+        <div className=' mx-2'>
           <Image src={Logo} alt="Captain's Logo" className='max-w-xs' />
         </div>
-        <div className="btn btn-ghost normal-case text-xl text-black">
+        
+        <div className="btn btn-ghost normal-case text-3xl text-black font-bold -ml-60">
           Savings Calulator
         </div>
+        
         <ul className="menu menu-horizontal bg-darker-blue rounded-box">
           <li>
             <Link href="https://www.thesavingscaptain.com/">
@@ -34,7 +37,7 @@ const Nav = () => {
             </Link>
           </li>
           <li>
-            <button className="btn bg-black py-3" onClick={()=>window.my_modal_1.showModal()}>Info</button>
+            <button className="btn btn-warning pt-4" onClick={()=>window.my_modal_1.showModal()}>Info</button>
             <dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">
         <form form='true' className="modal-box">
           <h3 className="font-bold text-lg">See how much you can save!</h3>

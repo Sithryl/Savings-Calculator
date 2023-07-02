@@ -9,11 +9,12 @@ module.exports = {
     colors: {
       "light-blue": "#3aafa9",
       "darker-blue": "#2b7a78",
-      amber: "#fcb900",
-      black: "#17252a",
+      "amber": "#fcb900",
+      "black": "#17252a",
       "white-blue": "#def2f1",
     },
     extend: {},
   },
-  plugins: [require("daisyui")],
+  
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
 };

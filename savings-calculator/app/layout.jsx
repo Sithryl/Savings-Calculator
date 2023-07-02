@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Savings Calculator",
-  description: "Find out how much money you could save",
+  description: "Find out how much money you could save!",
 };
 
 export default function RootLayout({ children }) {
