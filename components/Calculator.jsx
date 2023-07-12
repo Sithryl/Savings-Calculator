@@ -74,13 +74,10 @@ const ExpenseTracker = () => {
 
   const calculateFinalAmount = () => {
     if (yearsToSave && yearlyInterest) {
-        const interestDecimal = yearlyInterest / 100;
-    const monthlyInterestRate = Math.pow(1 + interestDecimal, 1 / 12) - 1;
-    const numMonths = yearsToSave * 12;
-
-    const futureValue = totalCost * ((Math.pow(1 + monthlyInterestRate, numMonths) - 1) / monthlyInterestRate);
-    const totalExpenses = totalCost * numMonths;
-    const finalAmount = futureValue - totalExpenses;
+      const monthlyRate = yearlyInterest / 12 / 100
+      const months = yearsToSave * 12;
+      const CompoundedInterest = totalCost * (Math.pow(1 + monthlyRate, months) -1) / monthlyRate; 
+       const finalAmount = CompoundedInterest - totalCost
 
       return finalAmount.toFixed(2);
     }
