@@ -77,7 +77,7 @@ const ExpenseTracker = () => {
       const monthlyRate = yearlyInterest / 12 / 100
       const months = yearsToSave * 12;
       const CompoundedInterest = totalCost * (Math.pow(1 + monthlyRate, months) -1) / monthlyRate; 
-       const finalAmount = CompoundedInterest - totalCost
+       const finalAmount = CompoundedInterest
 
       return finalAmount.toFixed(2);
     }
