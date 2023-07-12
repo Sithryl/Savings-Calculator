@@ -53,3 +53,6 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 This was a request from The Savings Captain. Check out the full site this is attached to from the home button on the live page
 or use this link: <https://thesavingscaptain.com/>
+
+## Live Site
+Checkout the live deployment on Vercel here: <https://savings-calculator-xi.vercel.app/>
