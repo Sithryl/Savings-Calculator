@@ -2,6 +2,7 @@
 
 The Savings Calculator is a web application that allows users to estimate their potential savings over time based on their monthly contributions and the desired number of years. The calculator takes into account the compounded interest to provide an accurate estimate of the final amount.
 
+![Alt text](./savings-calculator/public/assets/sc-site.png)
 ## Features
 
 - Input fields for monthly savings, number of years, and yearly interest rate.
