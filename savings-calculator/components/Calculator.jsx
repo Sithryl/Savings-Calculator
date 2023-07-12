@@ -74,8 +74,13 @@ const ExpenseTracker = () => {
 
   const calculateFinalAmount = () => {
     if (yearsToSave && yearlyInterest) {
-        const compoundedInterest = 1 + yearlyInterest / 100;
-        const finalAmount = totalCost * 12 * ((Math.pow(compoundedInterest, yearsToSave) - 1) / (compoundedInterest - 1));
+        const interestDecimal = yearlyInterest / 100;
+    const monthlyInterestRate = Math.pow(1 + interestDecimal, 1 / 12) - 1;
+    const numMonths = yearsToSave * 12;
+
+    const futureValue = totalCost * ((Math.pow(1 + monthlyInterestRate, numMonths) - 1) / monthlyInterestRate);
+    const totalExpenses = totalCost * numMonths;
+    const finalAmount = futureValue - totalExpenses;
 
       return finalAmount.toFixed(2);
     }
@@ -97,7 +102,7 @@ const ExpenseTracker = () => {
     <div>
       <div className="flex flex-col w-full lg:flex-row h-auto">
         <div className="grid flex-grow card bg-base-300 rounded-box place-items-center">
-      <h1 className='font-bold py-3 text-3xl'>Expense Tracker</h1>
+      <h1 className='font-bold py-3 text-3xl text-center'>Start Saving!</h1>
       <div>
             <label className='p-4' htmlFor="category-select">Type of Expense:</label>
             
@@ -172,13 +177,14 @@ const ExpenseTracker = () => {
 
       <div className="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center">
       {calculationStarted && (
-        <div>
-          <div>Final Amount: ${finalAmount}</div>
+          <div>
+            <h1 className='text-center text-xl'>In {yearsToSave} years you could be saving:</h1>
+          <div className='text-center text-2xl font-bold'>${finalAmount}</div>
         </div>
       )}
       
       {calculationStarted && (
-        <button onClick={resetCalculator}>Reset Calculator</button>
+        <button className='btn btn-warning' onClick={resetCalculator}>Reset Calculator</button>
       )}
       </div>
       </div>

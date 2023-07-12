@@ -1,19 +1,40 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Logo from '../public/assets/sc-thin.png';
+import Logosmall from '../public/assets/captains-hat.png';
 import Image from 'next/image';
 
 const Nav = () => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // Adjust the breakpoint as needed
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
       <main>
       <nav className="flex-row relative navbar bg-light-blue text-neutral-content justify-between">
+        {isSmallScreen ? (
+          <div className='flex-1 mx-2'>
+            <Image src={Logosmall} alt="Captain's Logo" className='max-w-xs' />
+          </div>
+        ) : (
+          <div className='flex-1 mx-2'>
+            <Image src={Logo} alt="Captain's Logo" className='max-w-xs' />
+          </div>
+        )};
 
-        <div className=' mx-2'>
-          <Image src={Logo} alt="Captain's Logo" className='max-w-xs' />
-        </div>
-        
-        <div className="btn btn-ghost normal-case text-3xl text-black font-bold -ml-60">
+        <div className="flex-1 text-center text-3xl text-black font-bold">
           Savings Calulator
         </div>
         
@@ -41,7 +62,7 @@ const Nav = () => {
             <dialog id="my_modal_1" className="modal modal-bottom sm:modal-middle">
         <form form='true' className="modal-box">
           <h3 className="font-bold text-lg">See how much you can save!</h3>
-          <p className="py-4">Add to your list of common expenses to see how much money you could be saving.</p>
+          <p className="py-4">Add to your list of common expenses to see how much money you could be saving over a certain amount of time.</p>
           <div className="modal-action">
       {/* if there is a button in form, it will close the modal */}
             <button className="btn">Close</button>
