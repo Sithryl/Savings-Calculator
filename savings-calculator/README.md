@@ -1,34 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Savings Calculator
+
+The Savings Calculator is a web application that allows users to estimate their potential savings over time based on their monthly contributions and the desired number of years. The calculator takes into account the compounded interest to provide an accurate estimate of the final amount.
+
+![Alt text](./savings-calculator/public/assets/sc-site.png)
+## Features
+
+- Input fields for monthly savings, number of years, and yearly interest rate.
+- Calculation of the total accumulated savings based on the provided inputs.
+- Clear functionality to reset the calculator and start a new calculation.
+
+## Technologies Used
+
+- HTML
+- CSS
+- JavaScript
+- React
+- Next.js
+- TailwindCSS
+- Daisyui
+
+## Usage
+
+1. Enter the monthly savings amount in the designated input field.
+2. Input the desired number of years for saving.
+3. Specify the yearly interest rate for the investment.
+4. Click the "Calculate" button to calculate the estimated total savings.
+5. To reset the calculator, click the "Reset" button.
 
 ## Getting Started
 
-First, run the development server:
+To get a copy of the project up and running on your local machine, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository: `git clone https://github.com/your-username/savings-calculator.git`
+2. Navigate to the project directory: `cd savings-calculator`
+3. Open the `index.html` file in your web browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Contributions are welcome! If you would like to contribute to this project, please follow these steps:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+1. Fork the repository.
+2. Create a new branch: `git checkout -b feature/my-new-feature`
+3. Make your changes and commit them: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/my-new-feature`
+5. Submit a pull request.
 
-## Learn More
+## License
 
-To learn more about Next.js, take a look at the following resources:
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Why I made this project
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This was a request from The Savings Captain. Check out the full site this is attached to from the home button on the live page
+or use this link: <https://thesavingscaptain.com/>
